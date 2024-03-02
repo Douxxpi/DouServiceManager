@@ -4,7 +4,7 @@
     "description": "A linux system service manager",
     "main": "DouServiceManager.js",
     "bin": {
-      "dserver": "./cmd.js"
+      "dsm": "./cmd.js"
     },
     "scripts": {
       "start": "node server.js -h"
