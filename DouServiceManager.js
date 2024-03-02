@@ -129,7 +129,7 @@ function creaserv(name, command) {
     console.log(`[i] Creating or updating service ${name}...`.yellow);
     const content = `
 [Unit]
-Description=Description of the service
+Description=DSM managed service
 
 [Service]
 ExecStart=${command}
