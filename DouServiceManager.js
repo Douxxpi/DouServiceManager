@@ -11,7 +11,7 @@ const pjp = path.resolve(__dirname, 'package.json');
 const pj = require(pjp);
 const version = pj.version;
 // starting message
-console.log(`[t] Starting DSMv${version} at [${date}]\n`.cyan);
+console.log(`[t] Starting DSMv${version} ( https://github.com/douxxpi ) at [${date}]\n`.cyan);
 
 // [t] time tracking
 const stime = Date.now();
