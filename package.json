@@ -11,12 +11,10 @@
     },
     "repository": {
       "type": "git",
-      "url": "https://github.com/douxxu/DouServer.git"
+      "url": "https://github.com/douxxpi/DouServiceManager.git"
     },
     "license": "MIT",
     "dependencies": {
-      "express": "^4.17.1",
-      "morgan": "^1.10.0",
       "colors": "^1.4.0",
       "yargs": "^17.0.1"
     }
