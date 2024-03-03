@@ -161,26 +161,41 @@ WantedBy=multi-user.target
             const dret = Date.now();
             console.log('[✔] Daemon reloaded successfully.'.green + ` (${dret - drst}ms)`.gray);
 
-            // start the service
-            console.log('[i] Starting service...'.yellow);
-            const ssst = Date.now();
-            exec(`sudo systemctl start ${name}`, (error, stderr) => {
+            // enable the service
+            console.log('[i] Enabling service...'.yellow);
+            const esst = Date.now();
+            exec(`sudo systemctl enable ${name}`, (error, stderr) => {
                 if (error) {
-                    console.error(`[X] Error starting the service: ${error.message}`.red);
+                    console.error(`[X] Error enabling the service: ${error.message}`.red);
                     exit();
                 }
                 if (stderr) {
-                    console.error(`[X] Error starting the service: ${stderr}`.red);
+                    console.error(`[X] Error enabling the service: ${stderr}`.red);
                     exit();
                 }
-                const sset = Date.now();
-                console.log('[✔] Service started successfully.'.green + ` (${sset - ssst}ms)`.gray);
-                exit();
+                const eset = Date.now();
+                console.log('[✔] Service enabled successfully.'.green + ` (${eset - esst}ms)`.gray);
+
+                // start the service
+                console.log('[i] Starting service...'.yellow);
+                const ssst = Date.now();
+                exec(`sudo systemctl start ${name}`, (error, stderr) => {
+                    if (error) {
+                        console.error(`[X] Error starting the service: ${error.message}`.red);
+                        exit();
+                    }
+                    if (stderr) {
+                        console.error(`[X] Error starting the service: ${stderr}`.red);
+                        exit();
+                    }
+                    const sset = Date.now();
+                    console.log('[✔] Service started successfully.'.green + ` (${sset - ssst}ms)`.gray);
+                    exit();
+                });
             });
         });
     });
 }
-
 function rservice(name) {
     // check if the service file exists
     if (!fs.existsSync(`/etc/systemd/system/${name}.service`)) {
